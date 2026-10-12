@@ -1,0 +1,11 @@
+[
+  {
+    "sourcetype": "edge:host:metrics",
+    "host": "example",
+    "source": "edge:metrics",
+    "_time": 1781280000,
+    "index": "prior_index",
+    "_metric": "node.memory.used_percent",
+    "_value": "54.25"
+  }
+]

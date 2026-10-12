@@ -7,3 +7,9 @@
 #     created: <unix-timestamp-ms>
 #     size: <bytes>
 #     numEvents: <count>
+edge_host_metrics:
+  sampleName: edge_host_metrics.json
+  description: Example Edge node and GPU host metrics.
+  created: 1791840000000
+  size: 164
+  numEvents: 1

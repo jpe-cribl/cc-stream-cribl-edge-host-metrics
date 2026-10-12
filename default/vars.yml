@@ -1,0 +1,5 @@
+splunk_metrics_index:
+  type: string
+  description: Splunk metrics index for Cribl Edge host metrics.
+  value: "'host_metrics'"
+  tags: cribl,edge,host,metrics,index

@@ -1,0 +1,9 @@
+[
+  {
+    "host": "example",
+    "source": "edge:metrics",
+    "_time": 1781280000,
+    "node_memory_used_percent": 63.5,
+    "gpu_utilization_percent": 42.0
+  }
+]
