@@ -1,7 +1,7 @@
 # `.github/` — workflows for this template
 
 Reusable GitHub Actions workflows callable from any dryvist Cribl pack via
-`uses: dryvist/cc-edge-pack-template/.github/workflows/<file>@main`. Caller
+`uses: dryvist/cc-edge-pack-template/.github/workflows/<file>@<40-hex commit SHA> # vX.Y.Z`. Caller
 workflows in this repo (`test.yml`, `release.yml`, `release-please.yml`) wire
 them up to GitHub events.
 
@@ -11,12 +11,12 @@ These workflows install themselves implicitly when a new pack scaffolds from
 `dryvist/cc-edge-pack-template` (`gh repo create --template`). The caller
 workflows under `.github/workflows/` are copied verbatim; the reusable
 workflows they reference resolve at runtime against
-`dryvist/cc-edge-pack-template@main`.
+`dryvist/cc-edge-pack-template/.github/workflows/<file>@<40-hex-sha> # vX.Y.Z`.
 
 If you're adding a workflow to a non-template repo manually, copy the relevant
 caller from this directory into your repo's `.github/workflows/` and adjust
-the `uses:` ref if you want to pin a specific template version (default
-`@main` follows the template's main branch).
+the `uses:` ref to pin a different template release. First-party reusable workflows are
+always referenced as `@<40-hex-sha> # vX.Y.Z`.
 
 ## Usage
 
@@ -40,9 +40,9 @@ Validates pack structure + runs the TypeScript Vitest suite against one
 `cribl/cribl` service container per entry in the `cribl_versions` matrix.
 
 | Input | Required | Default | Purpose |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `pack_type` | yes | — | `edge` or `stream` (drives validator naming convention + required-fields assertion) |
-| `cribl_versions` | no | `latest` + last patches of N-1/N-2 minors | JSON array of `{version, required}` objects — one test leg per entry; `required: false` legs are best-effort |
+| `cribl_versions` | no | `latest` + N-1/N-2 last patches | JSON array of `{version, required}`; one leg each; `required: false` is best-effort |
 | `node_version` | no | `lts/*` | Node.js version |
 | `yq_version` | no | `4.44.5` | Pinned `mikefarah/yq` version |
 
@@ -62,8 +62,8 @@ Builds a `.crbl` tarball via `scripts/build-crbl.sh` and publishes it to
 GitHub Releases (`softprops/action-gh-release`).
 
 | Input | Required | Default | Purpose |
-|---|---|---|---|
-| `additional_files` | no | `''` | Space-separated extra files to include in tarball; `LICENSE` auto-included if present |
+| --- | --- | --- | --- |
+| `additional_files` | no | `''` | Space-separated extra files for the tarball; `LICENSE` is added if present |
 
 Triggered by tag push in the calling workflow (typically by release-please
 when a release PR merges).
@@ -71,7 +71,7 @@ when a release PR merges).
 ## Caller workflows in this repo
 
 | File | Trigger | Calls |
-|---|---|---|
+| --- | --- | --- |
 | `workflows/test.yml` | PR + push to main (paths-filtered) | `cribl-pack-test.yml` (this repo) |
 | `workflows/release.yml` | semver tag push (`vX.Y.Z`, plus `-RCn`/`-TCn` prereleases) | `cribl-pack-release.yml` (this repo) |
 | `workflows/release-please.yml` | push to main | `_release-please.yml` (inherited from `dryvist/.github`) |

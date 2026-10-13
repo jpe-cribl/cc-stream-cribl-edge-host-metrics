@@ -8,7 +8,9 @@
       "changelog-path": "CHANGELOG.md",
       "extra-files": [
         "package.json"
-      ]
+      ],
+      "draft": true,
+      "force-tag-creation": true
     }
   }
 }
