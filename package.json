@@ -1,18 +1,19 @@
 {
-  "name": "cc-stream-demo-io",
+  "name": "cc-stream-cribl-edge-host-metrics",
   "version": "0.0.1",
   "minLogStreamVersion": "4.16.0",
-  "author": "dryvist <hello@dryvist.example>",
-  "description": "Demo passthrough pack — replace name/displayName/description/author when scaffolding from this template.",
-  "displayName": "Cribl Stream Demo Pack",
+  "author": "Cribl Stream Pack Maintainers",
+  "description": "Restores native Cribl metrics from Edge host metrics forwarded over JSON.",
+  "displayName": "Cribl Edge Host Metrics",
   "tags": {
     "streamtags": [
-      "replace",
-      "with",
-      "tags"
+      "cribl",
+      "edge",
+      "host",
+      "metrics"
     ],
     "dataType": [
-      "logs"
+      "metrics"
     ]
   },
   "exports": []

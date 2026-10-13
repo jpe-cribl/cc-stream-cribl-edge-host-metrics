@@ -2,19 +2,14 @@ id: default
 groups: {}
 comments: []
 routes:
-  # Demo route. Replace with your real routes when scaffolding a new pack.
-  # Validator rules:
-  #   - id and pipeline must be descriptive (no 'main', no 'route1')
-  #   - filter must be a real expression (not literally 'false' / '0')
-  #   - output MUST be __group (not input_id)
-  - id: passthrough
-    name: Demo Passthrough
+  - id: edge_host_metrics
+    name: Edge Host Metrics
     final: true
     disabled: false
-    pipeline: passthrough
-    description: "Demo route — replace when scaffolding a new pack."
+    pipeline: edge_s2s_metrics_to_splunk
+    description: Process Edge host metrics.
     enableOutputExpression: false
     targetContext: group
-    filter: "datatype=='cribl-demo'"
+    filter: "sourcetype=='edge:metrics'"
     clones: []
     output: __group
