@@ -14,7 +14,7 @@ Releases are automated via [release-please](https://github.com/googleapis/releas
 ## Conventional commit → version bump
 
 | Commit prefix | Bump |
-|---|---|
+| --- | --- |
 | `fix:` | patch (`1.2.3` → `1.2.4`) |
 | `feat:` | minor (`1.2.3` → `1.3.0`) |
 | `BREAKING CHANGE:` footer | **blocked** — see below |
@@ -44,4 +44,5 @@ Each release publishes:
 - `<pack-name>-<version>.crbl` — versioned tarball
 - `<pack-name>.crbl` — "latest" alias (overwritten each release)
 
-Built by `scripts/build-crbl.sh`, which the reusable release workflow invokes.
+Built by the shared `build-crbl.sh` in `jpe-cribl/.github`'s `scripts/`
+directory; the shared release workflow checks it out to `.gh-shared/` in CI.

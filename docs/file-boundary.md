@@ -5,17 +5,17 @@ template: **distinguish generic files from pack-specific files.**
 
 ## Generic — DO NOT modify in pack repos
 
-Edit only here in the template; updates propagate when packs sync.
+Edit template-owned files here; shared workflows and scripts are maintained in
+`jpe-cribl/.github`.
 
 - `tests/cribl-client.ts`, `tests/parse-filter.ts`, `tests/global-setup.ts`,
   `tests/test-helpers.ts`, `tests/routes.test.ts`, `tests/pipelines.test.ts`
 - `tests/package.json`, `tests/tsconfig.json`, `tests/vitest.config.ts`,
   `tests/pnpm-lock.yaml`
-- `scripts/build-crbl.sh`, `scripts/validate-pack-structure.sh`
+- Shared pack scripts and reusable workflows in `jpe-cribl/.github`; the
+  shared workflows check out scripts to `.gh-shared/` in CI.
 - `biome.jsonc`, `.editorconfig`, `lefthook.yml`, `.yamllint.yml`
 - `Makefile`, `docker-compose.yml`
-- `.github/workflows/cribl-pack-test.yml` (reusable)
-- `.github/workflows/cribl-pack-release.yml` (reusable)
 - `.github/workflows/test.yml` (caller — only `pack_type:` value changes per pack)
 - `.github/workflows/release.yml`
 
