@@ -1,20 +1,21 @@
 /**
- * Tarball parity — the test-path tarball builder and the release-path tarball
- * builder must include the same top-level entries.
+ * Tarball parity — the test-path tarball builder and the shared release-path
+ * tarball builder must include the same top-level entries.
  *
  * GENERIC: copied verbatim from the template into every pack repo.
  *
  * Two parallel implementations of the .crbl whitelist live in this repo:
  *   - `tests/cribl-client.ts::PACK_ROOT_ENTRIES`     (used in CI test job)
- *   - `scripts/build-crbl.sh::INCLUDE=(...)`         (used in release workflow)
+ *   - shared `build-crbl.sh::INCLUDE=(...)` from `jpe-cribl/.github` (release)
  *
  * If they drift, CI passes against one whitelist and ships a tarball with a
  * different whitelist — exactly the failure mode "fixed in commit 452f029
  * (top-level whitelist for createPackTarball)" was meant to prevent. This
  * test pins them together: it builds the tarball both ways from the live
- * pack root and asserts the set of entries matches.
+ * pack root and asserts the set of entries matches. CI checks the shared
+ * script out into `.gh-shared/`.
  *
- * No Cribl required. Runs as a plain unit test.
+ * Requires the Cribl service configured for the test suite.
  */
 
 import { execFileSync } from "node:child_process";
@@ -30,7 +31,12 @@ import * as path from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { CriblClient, PACK_ROOT, PACK_ROOT_ENTRIES } from "./cribl-client.js";
 
-const BUILD_SCRIPT = path.join(PACK_ROOT, "scripts", "build-crbl.sh");
+const BUILD_SCRIPT = path.join(
+  PACK_ROOT,
+  ".gh-shared",
+  "scripts",
+  "build-crbl.sh",
+);
 const REPO_NAME = "tarball-parity-test";
 const TAG_NAME = "v0.0.0-parity";
 const RELEASE_TARBALL = `/tmp/${REPO_NAME}-${TAG_NAME}.crbl`;
@@ -40,6 +46,12 @@ let tmpDir: string;
 let testTarballPath: string;
 
 beforeAll(async () => {
+  if (!existsSync(BUILD_SCRIPT)) {
+    throw new Error(
+      "Shared scripts from jpe-cribl/.github are missing. Run: git clone --depth 1 https://github.com/jpe-cribl/.github .gh-shared",
+    );
+  }
+
   tmpDir = mkdtempSync(path.join(tmpdir(), "tarball-parity-"));
 
   // Build the release-path tarball.

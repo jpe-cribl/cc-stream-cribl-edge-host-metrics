@@ -5,6 +5,7 @@
 
 # Build artifacts
 *.crbl
+.gh-shared/
 
 # Node / TypeScript
 node_modules/
