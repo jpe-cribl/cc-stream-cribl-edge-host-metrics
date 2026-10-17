@@ -17,13 +17,15 @@ Edit only here in the template; updates propagate when packs sync.
 - `.github/workflows/cribl-pack-test.yml` (reusable)
 - `.github/workflows/cribl-pack-release.yml` (reusable)
 - `.github/workflows/test.yml` (caller — only `pack_type:` value changes per pack)
-- `.github/workflows/release.yml`, `.github/workflows/release-please.yml`
+- `.github/workflows/release.yml`
 
 If you find yourself wanting to modify any of the above in a pack repo, **stop**.
 Either:
 
-1. The change belongs in this template (open a PR here, then propagate to packs), or
-2. The change should be expressed as fixture data (`tests/fixtures/<pipeline>/`).
+1. The change belongs in this template (open a PR here, then propagate to
+   packs), or
+2. The change should be expressed as fixture data under
+   `tests/fixtures/<pipeline>/`.
 
 ## Pack-specific — free to modify per-pack
 
