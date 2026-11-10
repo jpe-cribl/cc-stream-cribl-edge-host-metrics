@@ -253,7 +253,7 @@ export async function runScenario(
 
 // One flow picture per scenario: events in on the left, where they ended up
 // on the right. Renders natively on GitHub — no tooling needed to read it.
-// Brand palette (docs / docs-starlight): teal accent ramp on dark navy.
+// Brand palette (docs / private docs site): teal accent ramp on dark navy.
 const MERMAID_INIT = `%%{init: {"theme": "base", "themeVariables": {
   "primaryColor": "#0b1d2a", "primaryTextColor": "#f4efe6", "primaryBorderColor": "#4fb3a9",
   "lineColor": "#4fb3a9", "edgeLabelBackground": "#1f4f4a", "textColor": "#f4efe6",
