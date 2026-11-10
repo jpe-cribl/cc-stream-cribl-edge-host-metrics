@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/jpe-cribl/cc-stream-cribl-edge-host-metrics/compare/v1.0.0...v1.0.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* replace private names with role words ([#27](https://github.com/jpe-cribl/cc-stream-cribl-edge-host-metrics/issues/27)) ([f5af59f](https://github.com/jpe-cribl/cc-stream-cribl-edge-host-metrics/commit/f5af59f8fae39dcbfc769b4e131b7f7e983dafdf))
+
 ## 1.0.0 (2026-10-13)
 
 
