@@ -12,4 +12,4 @@ permissions:
 
 jobs:
   e2e:
-    uses: jpe-cribl/.github/.github/workflows/cribl-pack-e2e.yml@2116d14b07944a0ac393838b311e2ef5b3c352d7 # main
+    uses: jpe-cribl/.github/.github/workflows/cribl-pack-e2e.yml@70ace1dd47ee17e2fcabca65785510b5e50e1812 # main
